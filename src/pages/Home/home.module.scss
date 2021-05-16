@@ -1,0 +1,41 @@
+@import "../../variables";
+
+.root {
+	min-width: 100vh;
+	padding: 221px 0 0 0;
+	background: linear-gradient(180deg, $third 0%, $primary 100%);
+
+	&__wrap {
+		display: flex;
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	&__wrapText {
+		margin: 0 40px 0 0;
+		max-width: 515px;
+		width: 100%;
+	}
+
+	&__contentTitle {
+		margin: 0 0 32px;
+		font-weight: 700;
+		font-size: 75px;
+		line-height: 84px;
+		letter-spacing: 4px;
+	}
+
+	&__contentSubtitle {
+		margin: 0 0 48px;
+		font-size: 36px;
+		line-height: 42px;
+	}
+
+	&__contentParallax {
+		
+	}
+
+	&__buttonWrap {
+		
+	}
+}

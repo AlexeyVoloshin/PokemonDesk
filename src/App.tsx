@@ -1,13 +1,13 @@
 import React from 'react';
-import className from 'classnames';
-
-import './custom.css';
-import style from './App.module.scss';
+import HomePage from './pages/Home';
 
 const App = () => {
-  console.log('###: some log');
 
-  return <div className={className(style.header, 'color')}>Yes, we Did It! This is App Component!</div>;
+  return (
+	  <>
+		<HomePage/>;
+	  </>
+  )
 };
 
 export default App;

@@ -30,12 +30,16 @@
 	}
 }
 
-.fullWidth {
+.full {
 	width: 100%;
 }
 
-.colorButtonYellow {
+.yellow {
 	background: $buttonYellow;
+}
+
+.green {
+	background: $buttonGreen;
 }
 
 .sizeM {

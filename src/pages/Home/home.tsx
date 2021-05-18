@@ -17,9 +17,9 @@ const HomePage = () => {
 				<div className={s.root__wrapText}>
 					<div className={s.root__contentTitle}>
 						<Heading
-							size="m"
+							level="1"
 						>
-							<b>Find</b> all your favorite <b>Pokemon</b>
+							Find<span> all your favorite </span>Pokemon
 						</Heading>
 					</div>
 					<div className={s.root__contentSubtitle}>
@@ -30,8 +30,8 @@ const HomePage = () => {
 					<div className="root__buttonWrap">
 						<Button 
 							onClick={(event) => console.log('Click!!!!')}
-							fullWidth
-							colorYellow
+							fullWidth="full"
+							color="green"
 							size="l"
 						>
 							See pokemons

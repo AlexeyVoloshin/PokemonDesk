@@ -1,13 +1,15 @@
 import React from 'react';
-import className from 'classnames';
+import HomePage from './pages/Home';
+import s from './App.module.scss'
 
-import './custom.css';
-import style from './App.module.scss';
 
 const App = () => {
-  console.log('###: some log');
 
-  return <div className={className(style.header, 'color')}>Yes, we Did It! This is App Component!</div>;
+  return (
+	  <div className={s.root}>
+		<HomePage/>;
+	  </div>
+  )
 };
 
 export default App;

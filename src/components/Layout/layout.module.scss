@@ -1,9 +1,9 @@
 @import "../../breakpoints";
 
+
 .root {
   width: 100%;
   max-width: 1280px;
-  padding: 0 150px 0 0;
   margin: 0 auto;
 
   @include media(">tablet", "<desktop") {

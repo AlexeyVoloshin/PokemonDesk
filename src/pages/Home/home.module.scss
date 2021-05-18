@@ -4,6 +4,7 @@
 	min-width: 100vh;
 	padding: 221px 0 0 0;
 	background: linear-gradient(180deg, $third 0%, $primary 100%);
+	height: inherit;
 
 	&__wrap {
 		display: flex;
@@ -42,28 +43,4 @@
 	&__buttonWrap {
 		
 	}
-}
-
-h1 {
-	font-size:72px;
-}
-
-h2 {
-	font-size: 64px;
-}
-
-h3 {
-	font-size: 36px;
-}
-
-h4 {
-	font-size: 24px;
-}
-
-h5 {
-	font-size: 18px;
-}
-
-h6 {
-	font-size: 12px;
 }

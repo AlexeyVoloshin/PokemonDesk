@@ -1,4 +1,6 @@
-const pokemons = [
+import IPokemonCard from "../model/pokemon";
+
+const pokemons: IPokemonCard[] = [
 	{
 	  "name_clean": "bulbasaur",
 	  "abilities": [

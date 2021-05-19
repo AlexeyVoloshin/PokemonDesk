@@ -8,17 +8,18 @@ import pokemons from '../../services/pokemonsData';
 import s from './pokedex.module.scss';
 
 const Pokedex: React.FC = () => {
-	let PokemonCards: IPokemonCard[] = pokemons;
+	const PokemonCards: IPokemonCard[] = pokemons;
 	return (
 		<div className={s.root}>
 			<Header/>
 			<Layout>
 				<div className={s.root__wrap}>
 				{
-					PokemonCards.map(({id, ...res})=> (
+					PokemonCards.map((card)=> (
 						<PokemonCard 
-						key={id}
-						dataCard={res}/>
+						key={card.id}
+						// eslint-disable-next-line react/jsx-props-no-spreading
+						{...card}/>
 					))
 				}
 				</div>

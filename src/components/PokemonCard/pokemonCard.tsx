@@ -5,8 +5,9 @@ import Heading from "../Heading";
 
 import s from './pokemonCard.module.scss';
 
-const PokemonCard: React.FC<IPokemonCard> = ({dataCard}) => {
-	const {img, types, stats, name} = dataCard;
+const PokemonCard:React.FC<IPokemonCard> = (card)  => {
+	
+	const {img, types, stats, name,} = card;
 	const [typesA = 'unknown', typesB = 'unknown'] = types;
 	const {attack, defense} = stats;
     return (
@@ -49,7 +50,7 @@ const PokemonCard: React.FC<IPokemonCard> = ({dataCard}) => {
                 </div>
             </div>
             <div className={s.pictureWrap}>
-                <img src={img} alt="Charmander" />
+                <img src={img} alt={name} />
             </div>
         </div>
     );

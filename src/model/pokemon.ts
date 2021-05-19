@@ -8,7 +8,7 @@ interface Stats {
 }
 export default interface IPokemonCard  {
 	abilities: string[];
-	'base_experience': string;
+	'base_experience': number;
 	height: number;
 	id: number;
 	img: string;
@@ -18,6 +18,6 @@ export default interface IPokemonCard  {
 	order: number;
 	stats: Stats;
 	types: string[];
-	weight: string;
+	weight: number;
 }
 

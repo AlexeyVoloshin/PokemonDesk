@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { navigate } from 'hookrouter';
-import Header from '../../components/Header';
 import Button from '../../components/Button';
 import s from './home.module.scss';
 import Parallax from './components/Parallax';
@@ -10,16 +9,14 @@ import Heading from '../../components/Heading';
 import Paragraph from '../../components/Paragraph';
 import { LinkEnum } from '../../routes';
 
-
 const HomePage = () => {
 	return (
 		<div className={s.root}>
-			<Header />
 			<Layout className={s.root__wrap}>
 				<div className={s.root__wrapText}>
 					<div className={s.root__contentTitle}>
 						<Heading
-							level="1"
+							size="1"
 						>
 							Find<span> all your favorite </span>Pokemon
 						</Heading>
@@ -43,10 +40,8 @@ const HomePage = () => {
 					<Parallax/>
 				</div>
 			</Layout>
-			
 		</div>
 	)
-	
 }
 
 export default HomePage;

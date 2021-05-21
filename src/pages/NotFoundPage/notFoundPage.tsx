@@ -1,10 +1,10 @@
 import React from 'react';
+import { navigate } from 'hookrouter';
 import Button from '../../components/Button';
 import Heading from '../../components/Heading';
 import Layout from '../../components/Layout';
 import s from './notFoundPage.module.scss';
 import TeamRocket from '../assets/img/page404/Team_Rocket.png'
-import { navigate } from 'hookrouter';
 import { LinkEnum } from '../../routes';
 
 const NotFoundPage = () => {
@@ -18,7 +18,7 @@ const NotFoundPage = () => {
 				</div>
 				<div className={s.root__title}>
 					<Heading
-						level="3"
+						size="3"
 					>
 						<span>The rocket team</span> has won this time.
 					</Heading>

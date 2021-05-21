@@ -5,17 +5,14 @@ import Heading from "../Heading";
 
 import s from './pokemonCard.module.scss';
 
-const PokemonCard:React.FC<IPokemonCard> = (card)  => {
+const PokemonCard:React.FC<IPokemonCard> = ({img, types, stats: {attack, defense}, name,})  => {
 	
-	const {img, types, stats, name,} = card;
-	const [typesA = 'unknown', typesB = 'unknown'] = types;
-	const {attack, defense} = stats;
     return (
         <div className={s.root}>
             <div className={s.infoWrap}>
 					<div className={s.titleName}>
 						<Heading  
-							level='4'
+							size='4'
 						>
 							{name}
 						</Heading>
@@ -35,18 +32,21 @@ const PokemonCard:React.FC<IPokemonCard> = (card)  => {
                     </div>
                 </div>
                 <div className={s.labelWrap}>
-							  <Button
-							  		onClick={()=> console.log('card')}
-									  size="m"
-								>
-							  	{typesA}
-							  </Button>
-							  <Button
-							  		onClick={()=> console.log('card')}
-									  size="m"
-								>
-							  	{typesB}
-							  </Button>
+						 {
+							 types.map((type) => 
+								 <>
+									<Button
+										// eslint-disable-next-line no-console
+										onClick={()=> console.log('card')}
+										size="m"
+										key={type}
+									>
+									{type}
+								</Button>
+								 </>
+							 )
+						 }
+							  
                 </div>
             </div>
             <div className={s.pictureWrap}>

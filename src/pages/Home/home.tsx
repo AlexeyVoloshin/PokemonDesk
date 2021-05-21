@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { navigate } from 'hookrouter';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import s from './home.module.scss';
@@ -7,6 +8,7 @@ import Parallax from './components/Parallax';
 import Layout from '../../components/Layout';
 import Heading from '../../components/Heading';
 import Paragraph from '../../components/Paragraph';
+import { LinkEnum } from '../../routes';
 
 
 const HomePage = () => {
@@ -29,8 +31,7 @@ const HomePage = () => {
 					</div>
 					<div className="root__buttonWrap">
 						<Button 
-							onClick={(event) => console.log('Click!!!!')}
-							fullWidth="full"
+							onClick={() => navigate(LinkEnum.POKEDEX)}
 							color="green"
 							size="l"
 						>

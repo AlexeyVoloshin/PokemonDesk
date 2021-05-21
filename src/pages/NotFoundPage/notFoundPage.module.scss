@@ -1,0 +1,43 @@
+@import "../../variables";
+
+.root {
+	background: $danger;
+	min-height: 100vh;
+	min-width: 100vh;
+	display: flex;
+
+	&__content {
+		display: flex;
+    	flex-direction: column;
+    	justify-content: center;
+	}
+	&__title {
+		text-align: center;
+		margin: 0 0 32px 0;
+
+		span {
+			color: #F2F2F2;
+		}
+	}
+
+	&__backImg {
+		background: url('../assets/img/page404/404.png') center/contain no-repeat;
+		margin: 0 0 10px 0;
+	}
+
+	&__buttonReturn {
+		display: flex;
+		justify-content: center;
+		padding: 0 0 62px 0;
+	}
+
+	&__imageTeam {
+		max-width: 690px;
+		height: 623px;
+		margin: 0 auto;
+	}
+
+	&__imageTeam img{
+		width: 100%;
+	}
+}

@@ -4,12 +4,10 @@
 	min-width: 100vh;
 	padding: 221px 0 0 0;
 	background: linear-gradient(180deg, $third 0%, $primary 100%);
-	height: inherit;
+	min-height: 100vh;
 
 	&__wrap {
 		display: flex;
-		width: 100%;
-		margin: 0 auto;
 	}
 
 	&__wrapText {

@@ -63,15 +63,20 @@ const Pokedex: React.FC = () => {
 	return (
 		<Layout className={s.root}>
 			<div className={s.root__wrap}>
-				<Heading size="3" className={s.root__title}>
-					{data && data.total} <b>Pokemons</b> for you to choose your favorite
-				</Heading>
+				<div className={s.root__title}>
+					<Heading size="3">
+						{data && data.total} <b>Pokemons</b> for you to choose your favorite
+					</Heading>
+				</div>
 				<div className={s.root__wrapCardsContainer}>
+					<div className={s.root__container}>
 					{
 						data && data.pokemons.map((card: IPokemonCard)=> 
-							<div className={s.root__wrapCard}>
+							<div 
+								className={s.root__wrapCard}
+								key={card.id}
+							>
 								<PokemonCard 
-									key={card.id}
 									img={card.img}
 									types={card.types}
 									stats={card.stats}
@@ -80,6 +85,7 @@ const Pokedex: React.FC = () => {
 							</div>
 						)
 					}
+					</div>
 				</div>
 			</div>
 		</Layout>

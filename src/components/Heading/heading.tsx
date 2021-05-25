@@ -1,11 +1,13 @@
 import React from 'react';
 
 interface IHeadingProps {
-	level?: string,
+	size?: string,
+	className?: React.HTMLAttributes<HTMLDivElement> | string,
+	[name: string]: any;
 }
-const Heading: React.FC<IHeadingProps> = ({children, level}) => {
+const Heading: React.FC<IHeadingProps> = ({children, size}) => {
 
-	const Tag = `h${level}` as keyof JSX.IntrinsicElements
+	const Tag = `h${size}` as keyof JSX.IntrinsicElements
 	
 	return <Tag>{children}</Tag>
 }

@@ -5,6 +5,7 @@ import s from './layout.module.scss';
 
 interface IClassNameProps {
 	children: React.ReactNode;
+	className: React.HTMLAttributes<HTMLDivElement> | string,
 	[name: string]: any;
 }
 

@@ -8,6 +8,35 @@
 	&__wrap {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-between;
+		justify-content: center;
 	}
+
+	&__title {
+		text-align: center;
+		font-size: 36px;
+		margin: 0 0 35px 0;
+	}
+
+	&__wrapCardsContainer {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__wrapCard {
+		padding: 0 15px;
+	}
+}
+
+.loadMess {
+	color: rgb(0, 153, 255);
+	padding: 221px 0 0 0;
+	text-align: center;
+	font-size: 40px;
+}
+
+.errorMess {
+	color: $danger;
+	padding: 221px 0 0 0;
+	text-align: center;
+	font-size: 40px;
 }

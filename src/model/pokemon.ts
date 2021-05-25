@@ -7,17 +7,17 @@ interface Stats {
 	speed: number;
 }
 export default interface IPokemonCard  {
-	abilities: string[];
-	'base_experience': number;
-	height: number;
-	id: number;
+	abilities?: string[];
+	'base_experience'?: number;
+	height?: number;
+	id?: number;
 	img: string;
-	'is_default': boolean;
+	'is_default'?: boolean;
 	name: string;
-	'name_clean': string;
-	order: number;
+	'name_clean'?: string;
+	order?: number;
 	stats: Stats;
 	types: string[];
-	weight: number;
+	weight?: number;
 }
 

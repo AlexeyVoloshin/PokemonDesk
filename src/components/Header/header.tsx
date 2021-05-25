@@ -9,6 +9,7 @@ import { GENERAL_MENU } from '../../routes';
 
 const Header = () => {
 	const path = usePath();
+	console.log('#### header');
 	
 	return (
 		<div className={s.root}>
@@ -35,4 +36,4 @@ const Header = () => {
 	)
 }
 
-export default Header;
+export default React.memo(Header);

@@ -9,7 +9,7 @@
 	margin-bottom: 45px;
 	cursor: pointer;
 	transition: all ease-in-out .15s;
-  
+
 	&:hover {
 	 transform: scale(1.03);
 	 transition: all ease-in-out 0s;
@@ -107,4 +107,12 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	&__button {
+		margin-left: 15px;
+	}
+
+	&__button:first-child {
+		margin: 0;
+	}
   }

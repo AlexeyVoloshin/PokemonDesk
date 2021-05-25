@@ -34,16 +34,17 @@ const PokemonCard:React.FC<IPokemonCard> = ({img, types, stats: {attack, defense
                 <div className={s.labelWrap}>
 						 {
 							 types.map((type) => 
-								 <>
+								 <div className={s.labelWrap__button}
+								 	key={type}
+								 >
 									<Button
 										// eslint-disable-next-line no-console
 										onClick={()=> console.log('card')}
 										size="m"
-										key={type}
 									>
 									{type}
 								</Button>
-								 </>
+								 </div>
 							 )
 						 }
 							  

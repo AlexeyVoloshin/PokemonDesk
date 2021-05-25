@@ -4,6 +4,7 @@ interface CssExports {
   'errorMess': string;
   'loadMess': string;
   'root': string;
+  'root__container': string;
   'root__title': string;
   'root__wrap': string;
   'root__wrapCard': string;

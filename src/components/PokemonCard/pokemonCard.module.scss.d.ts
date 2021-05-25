@@ -4,6 +4,7 @@ interface CssExports {
   'infoWrap': string;
   'label': string;
   'labelWrap': string;
+  'labelWrap__button': string;
   'pictureWrap': string;
   'root': string;
   'statItem': string;

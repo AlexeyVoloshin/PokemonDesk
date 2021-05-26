@@ -1,11 +1,11 @@
 import React from 'react';
-import IPokemonCard from '../../model/pokemon';
+import {IPokemonsReaquest} from '../../interface/pokemon';
 import Button from '../Button';
 import Heading from "../Heading";
 
 import s from './pokemonCard.module.scss';
 
-const PokemonCard:React.FC<IPokemonCard> = ({img, types, stats: {attack, defense}, name,})  => {
+const PokemonCard:React.FC<IPokemonsReaquest> = ({img, types, stats: {attack, defense}, name,})  => {
 	
     return (
         <div className={s.root}>

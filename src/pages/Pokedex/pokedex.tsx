@@ -1,60 +1,52 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import { navigate } from 'hookrouter';
+import React, {useState} from 'react';
 import Heading from '../../components/Heading';
 import Layout from '../../components/Layout';
 import PokemonCard from '../../components/PokemonCard';
-import req from '../../components/utils/request';
-import IPokemonCard from '../../model/pokemon';
+import useData from '../../hook/getData';
+import useDebounce from '../../hook/useDebounce';
+import {IPokemons, IPokemonsReaquest} from '../../interface/pokemon';
+import { LinkEnum } from '../../routes';
 
 import s from './pokedex.module.scss';
 
-interface IData {
-	count: number;
-	limit: number;
-	offset: number;
-	pokemons: IPokemonCard[];
-	total: number;
+interface IQuery {
+	limit?: number;
+	name?: string;
 }
 
-interface IPokemons {
-	data: IData | undefined;
-	isLoading: boolean;
-	isError: boolean;
-}
+const PokedexPage: React.FC = () => {
+	const [searchValue, setSearchValue] = useState('');
+	const [query, setQuery] = useState<IQuery>({
+		limit: 12
+	});
 
-const usePokemons = (): IPokemons =>{
-	const [data, setData] = useState<IData>();
-	const [isLoading, setIsLoading] = useState<boolean>(true);
-	const [isError, setIsError] = useState<boolean>(false);
+	const debouncedValue = useDebounce(searchValue, 500);
 
-	useEffect(() => {
-		const getPokemons = async () => {
-			setIsLoading(true);
-			try {
-				const response = await req('getPokemons');
-				setData(response);
-			} catch (err) {
-				setIsError(true);
-			} finally {
-				setIsLoading(false);
-			}
-		}
-		getPokemons()
-	}, []);
+	const {
+		data, 
+		isLoading, 
+		isError} = useData<IPokemons>('getPokemons', query, [debouncedValue]);
 
-	return {
-		data,
-		isLoading,
-		isError
+	const handleSearchChang = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setSearchValue(event.target.value)
+		setQuery((state: IQuery) => ({
+			...state,
+			name: event.target.value,
+		}))
 	}
-}
 
-const Pokedex: React.FC = () => {
-	const {data, isLoading, isError} = usePokemons()
-
-
-	if (isLoading) {
-		return <div className={s.loadMess}>Loading...</div>
+	const handleClick = (id: number | string) => {
+		const idx = LinkEnum.POKEMON.indexOf(':');
+		const fullUrl = idx > 0 ? LinkEnum.POKEMON.slice(0, idx): LinkEnum.POKEMON
+		
+		navigate(`${fullUrl}${id}`)
 	}
+
+	// if (isLoading) {
+	// 	return <div className={s.loadMess}>Loading...</div>
+	// }
 
 	if(isError) {
 		return <div className={s.errorMess}>Something wrong!!!!</div>
@@ -65,16 +57,28 @@ const Pokedex: React.FC = () => {
 			<div className={s.root__wrap}>
 				<div className={s.root__title}>
 					<Heading size="3">
-						{data && data.total} <b>Pokemons</b> for you to choose your favorite
+						{!isLoading && data && data.total} 
+						<b>Pokemons</b> for you to choose your favorite
 					</Heading>
+				</div>
+				<div className={s.root__wrapInput}>
+					<input 
+						className={s.root__inputText} 
+						type="text" 
+						value={searchValue} 
+						placeholder="Encuentra tu pokémon..."
+						onChange={handleSearchChang}/>
 				</div>
 				<div className={s.root__wrapCardsContainer}>
 					<div className={s.root__container}>
 					{
-						data && data.pokemons.map((card: IPokemonCard)=> 
+						!isLoading && data && data.pokemons.map((card: IPokemonsReaquest)=> 
+							// eslint-disable-next-line jsx-a11y/click-events-have-key-events
+							// eslint-disable-next-line jsx-a11y/no-static-element-interactions
 							<div 
 								className={s.root__wrapCard}
 								key={card.id}
+								onClick={() => handleClick(card.id)}
 							>
 								<PokemonCard 
 									img={card.img}
@@ -92,4 +96,4 @@ const Pokedex: React.FC = () => {
 	)
 }
 
-export default Pokedex;
+export default PokedexPage;

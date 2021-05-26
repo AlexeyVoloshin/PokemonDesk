@@ -32,7 +32,7 @@ const config: IConfig = {
 			getPokemon: {
 				method: 'GET',
 				uri: {
-					pathname: '/api/v1/pokemon'
+					pathname: '/api/v1/pokemon/:id'
 				}
 			}
 		}

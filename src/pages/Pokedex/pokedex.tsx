@@ -38,10 +38,7 @@ const PokedexPage: React.FC = () => {
 	}
 
 	const handleClick = (id: number | string) => {
-		const idx = LinkEnum.POKEMON.indexOf(':');
-		const fullUrl = idx > 0 ? LinkEnum.POKEMON.slice(0, idx): LinkEnum.POKEMON
-		
-		navigate(`${fullUrl}${id}`)
+		navigate(`${LinkEnum.POKEMON}${id}`)
 	}
 
 	// if (isLoading) {

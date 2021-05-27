@@ -1,3 +1,3 @@
-import Pokedex from './pokedex';
+import PokedexPage from './pokedex';
 
-export default Pokedex;
+export default PokedexPage;

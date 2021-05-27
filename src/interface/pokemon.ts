@@ -6,7 +6,7 @@ interface Stats {
 	'special-defense': number;
 	speed: number;
 }
-export default interface IPokemonCard  {
+export interface IPokemonsReaquest  {
 	abilities?: string[];
 	'base_experience'?: number;
 	height?: number;
@@ -19,5 +19,10 @@ export default interface IPokemonCard  {
 	stats: Stats;
 	types: string[];
 	weight?: number;
+}
+
+export interface IPokemons {
+	total: number,
+	pokemons: IPokemonsReaquest[]
 }
 

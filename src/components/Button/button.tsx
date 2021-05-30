@@ -12,25 +12,22 @@ interface IButtonProps {
 
 const Button: React.FC<IButtonProps> = ({children, onClick, ...res}) => {
 	const {
-		fullWidth = '',
 		color = '',
 		size = '',
 	} = res;
 	const colorClass: string = s[(color || 'green') as keyof typeof s];
-	const fullClass: string = s[(fullWidth || null) as keyof typeof s];
 	let sizeButton: string = '';
-	if(size) {
-		switch (size) {
-			case 'l':
-				sizeButton = 'sizeL';
-				break;
-			case 'm':
-				sizeButton = 'sizeM';
-				break;
-			default:
-				sizeButton = 'sizeL';
-				break;
-		};
+
+	switch (size) {
+		case 'l':
+			sizeButton = 'sizeL';
+			break;
+		case 'm':
+			sizeButton = 'sizeM';
+			break;
+		default:
+			sizeButton = 'sizeL';
+			break;
 	};
 
 	return (
@@ -38,7 +35,7 @@ const Button: React.FC<IButtonProps> = ({children, onClick, ...res}) => {
 			type="button"
 			className={cn(s.root, 
 				s[sizeButton as keyof typeof s], 
-				colorClass, fullClass,)}
+				colorClass,)}
 			onClick={onClick}
 		>
 			{children}

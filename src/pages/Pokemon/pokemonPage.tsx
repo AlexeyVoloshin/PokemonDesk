@@ -13,13 +13,17 @@ import { LinkEnum } from '../../routes';
 import s from './pokemonPage.module.scss';
 
 export interface PokemonProps {
-	id: string | number;
+	id: number;
 }
 
 const PokemonPage: React.FC<PokemonProps> = ({id}) => {
 
-	const {data} = useData<IPokemonsReaquest>('getPokemon', id);
+	const {data, isLoading} = useData<IPokemonsReaquest>('getPokemon', {id});
 	
+	if(isLoading) {
+		return (<div>Loading...</div>)
+	}
+
 	return (
 		<Layout className={s.root} >
 			<div className={s.root__content}>
@@ -38,7 +42,7 @@ const PokemonPage: React.FC<PokemonProps> = ({id}) => {
 							className={s.root__title}
 							size="3"
 						>
-							Charizard	
+							{data?.name}	
 						</Heading>
 						<Heading
 							className={s.root__subtitle}
@@ -50,7 +54,7 @@ const PokemonPage: React.FC<PokemonProps> = ({id}) => {
 							578
 						</div>
 					</div>
-					<div className={s.root__cartAbilitiesBoxes}>
+					<div>
 						<div className={s.root__cartAbilitiesBox}>
 							<Paragraph>
 								Abilities
@@ -58,10 +62,15 @@ const PokemonPage: React.FC<PokemonProps> = ({id}) => {
 							<div 
 								className={s.root__pAbilities}>
 								{
-									data && data.abilities?.map((item) => 
+									data && data.abilities?.map((item) =>
+									<div
+										key={item}
+									>
 										<Paragraph>
 											{item}
 										</Paragraph>
+									</div> 
+									
 									)
 								}
 							</div>
@@ -138,7 +147,6 @@ const PokemonPage: React.FC<PokemonProps> = ({id}) => {
 							</div>
 						</div>
 					</div>
-					
 				</div>
 			</div>
 		</Layout>

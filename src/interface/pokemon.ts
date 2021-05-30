@@ -22,6 +22,7 @@ export interface IPokemonsReaquest  {
 }
 
 export interface IPokemons {
+	id: number,
 	total: number,
 	pokemons: IPokemonsReaquest[]
 }

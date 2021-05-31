@@ -11,9 +11,10 @@ import { LinkEnum } from '../../routes';
 
 import s from './pokedex.module.scss';
 
-interface IQuery {
+export interface IQuery {
 	limit?: number;
 	name?: string;
+	id?: number;
 }
 
 const PokedexPage: React.FC = () => {
@@ -37,8 +38,11 @@ const PokedexPage: React.FC = () => {
 		}))
 	}
 
-	const handleClick = (id: number | string) => {
-		navigate(`${LinkEnum.POKEMON}${id}`)
+	const handleClick = (id: number) => {
+		if(LinkEnum.POKEMON.indexOf(':id') !== -1) {
+			const result = LinkEnum.POKEMON.replace(':id', `${id}`);
+			navigate(`${result}`);
+		}
 	}
 
 	// if (isLoading) {
@@ -75,7 +79,11 @@ const PokedexPage: React.FC = () => {
 							<div 
 								className={s.root__wrapCard}
 								key={card.id}
-								onClick={() => handleClick(card.id)}
+								onClick={() =>{ 
+									if(card.id) {
+										handleClick(card.id) 
+									}
+								}}
 							>
 								<PokemonCard 
 									img={card.img}

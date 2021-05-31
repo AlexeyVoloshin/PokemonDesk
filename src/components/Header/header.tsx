@@ -9,8 +9,6 @@ import { GENERAL_MENU } from '../../routes';
 
 const Header = () => {
 	const path = usePath();
-	console.log('#### header');
-	
 	return (
 		<div className={s.root}>
 			<div className={s.root__wrap} >

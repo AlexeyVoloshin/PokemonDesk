@@ -20,7 +20,7 @@ export interface IQuery {
 const PokedexPage: React.FC = () => {
 	const [searchValue, setSearchValue] = useState('');
 	const [query, setQuery] = useState<IQuery>({
-		limit: 12
+		limit: 12,
 	});
 
 	const debouncedValue = useDebounce(searchValue, 500);

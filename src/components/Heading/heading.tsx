@@ -5,7 +5,7 @@ interface IHeadingProps {
 	className?: string,
 	[name: string]: any;
 }
-const Heading: React.FC<IHeadingProps> = ({children, size, className}) => {
+const Heading: React.FC<IHeadingProps> = ({children, size = '1', className}) => {
 
 	const Tag = `h${size}` as keyof JSX.IntrinsicElements
 	return <Tag className={className}>{children}</Tag>

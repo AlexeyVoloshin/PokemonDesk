@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { navigate } from 'hookrouter';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import { connect, useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Heading from '../../components/Heading';
 import Layout from '../../components/Layout';
 import PokemonCard from '../../components/PokemonCard';
@@ -8,6 +10,10 @@ import useData from '../../hook/getData';
 import useDebounce from '../../hook/useDebounce';
 import {IPokemons, IPokemonsReaquest} from '../../interface/pokemon';
 import { LinkEnum } from '../../routes';
+
+import * as actions from '../../store/actions/pokemonsAction';
+import { getTypesAction } from '../../store/reducers/pokemonsReducer';
+
 
 import s from './pokedex.module.scss';
 
@@ -18,6 +24,7 @@ export interface IQuery {
 }
 
 const PokedexPage: React.FC = () => {
+	const dispatch = useDispatch();
 	const [searchValue, setSearchValue] = useState('');
 	const [query, setQuery] = useState<IQuery>({
 		limit: 12,
@@ -30,6 +37,10 @@ const PokedexPage: React.FC = () => {
 		isLoading, 
 		isError} = useData<IPokemons>('getPokemons', query, [debouncedValue]);
 
+	useEffect(() => {
+		dispatch(getTypesAction())
+	}, [dispatch]);
+	
 	const handleSearchChang = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchValue(event.target.value)
 		setQuery((state: IQuery) => ({
@@ -101,4 +112,15 @@ const PokedexPage: React.FC = () => {
 	)
 }
 
-export default PokedexPage;
+const mapStateToProps = (state: any) => {
+	return {
+		pokemons: state.pokemons,
+	};
+}
+
+const mapDispatchToProps = (dispatch: any) => {
+	return bindActionCreators(actions, dispatch)
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(PokedexPage);

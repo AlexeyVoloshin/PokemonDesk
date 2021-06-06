@@ -27,3 +27,5 @@ export interface IPokemons {
 	pokemons: IPokemonsReaquest[]
 }
 
+export type ITypesRequest = string[];
+

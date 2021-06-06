@@ -1,6 +1,10 @@
 import {combineReducers } from 'redux';
 
-import pokemonsReducer from './pokemonsReducer'
+import pokemonsReducer, { IPokemonsInitialState } from './pokemonsReducer'
+
+export interface IIninitialState {
+	pokemons: IPokemonsInitialState
+}
 
 const createRootReducer = () => 
 	combineReducers({

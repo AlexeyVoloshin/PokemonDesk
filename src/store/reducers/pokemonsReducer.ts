@@ -7,6 +7,7 @@ import pokemonsActionTypes from "../actions/pokemonsActionTypes";
 
 interface TypesAction {
 	type: pokemonsActionTypes
+	allpokemons: pokemonsActionTypes
 	payload?: string[] 
 }
 
@@ -14,6 +15,7 @@ type ActionTypes = TypesAction
 
 export interface IPokemonsInitialState {
 	types: IStateRequest<string>
+	allpokemons: IStateRequest<string>
 }
 
 const initialState: IPokemonsInitialState = {
@@ -21,11 +23,24 @@ const initialState: IPokemonsInitialState = {
 		isLoading: false,
 		data: null,
 		error: null,
+	},
+	allpokemons: {
+		isLoading: false,
+		data: null,
+		error: null,
 	}
+
 }
 
 const pokemonsReducer = (state = initialState, action: ActionTypes) => {
 	switch (action.type) {
+		case pokemonsActionTypes.GET_POKEMONS:
+			return {
+				...state,
+				allpokemons: {
+					data: action.payload,
+				}
+			}
 		case pokemonsActionTypes.FETCH_TYPES:
 			return {
 				...state,
@@ -60,6 +75,12 @@ const pokemonsReducer = (state = initialState, action: ActionTypes) => {
 
 export const getPokemonTypes = (state: IIninitialState) => state.pokemons.types.data;
 export const getPokemonTypesLoading = (state: IIninitialState) => state.pokemons.types.isLoading;
+
+export const getAllPokemons = (state: IIninitialState) => {
+	console.log('###data: ', state.pokemons.allpokemons.data);
+	
+	return state.pokemons.allpokemons.data;
+}
 
 export const getTypesAction = () => {
 	return async (dispatch: Dispatch<ActionTypes>) => {
